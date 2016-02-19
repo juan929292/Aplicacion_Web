@@ -20,7 +20,7 @@ echo "<h3>"."<a href='inserta_bd.php?id=0'><img width=40 src='/proyecto/img/inse
 		?>
 		<table class="centered bordered card-panel white"  style="text-align:center;">
             <tr class="card-panel teal lighten-2 white-text" style="font-weight:bold">
-                <td>Id Pelicula</td>
+                <td>Id_Pelicula</td>
                 <td>Titulo</td>
                 <td>Duracion</td>
                 <td>Año</td>
@@ -57,7 +57,7 @@ echo "<h3>"."<a href='inserta_bd.php?id=0'><img width=40 src='/proyecto/img/inse
 		?>
 		<table class="centered bordered card-panel white"  style="text-align:center;">
             <tr class="card-panel teal lighten-2 white-text" style="font-weight:bold">
-                <td>Id Director</td>
+                <td>Id_Director</td>
                 <td>Nombre</td>
                 <td>Pais</td>
             </tr>
@@ -88,7 +88,7 @@ echo "<h3>"."<a href='inserta_bd.php?id=0'><img width=40 src='/proyecto/img/inse
 		?>
 		<table class="centered bordered card-panel white"  style="text-align:center;">
             <tr class="card-panel teal lighten-2 white-text" style="font-weight:bold">
-                <td>Id genero</td>
+                <td>Id_genero</td>
                 <td>Nombre</td>
             </tr>     
         <?php
@@ -116,9 +116,10 @@ echo "<h3>"."<a href='inserta_bd.php?id=0'><img width=40 src='/proyecto/img/inse
 		?>
 		<table class="centered bordered card-panel white"  style="text-align:center;">
             <tr class="card-panel teal lighten-2 white-text" style="font-weight:bold">
-                <td>id comentario</td>
-                <td>Nombre</td>
-                <td>Pais</td>
+                <td>Id_comentario</td>
+                <td>Contenido</td>
+                <td>Id_usuario</td>
+				<td>Id_pelicula</td>
             </tr>
             
         <?php
@@ -149,9 +150,9 @@ echo "<h3>"."<a href='inserta_bd.php?id=0'><img width=40 src='/proyecto/img/inse
 		?>
 		<table class="centered bordered card-panel white"  style="text-align:center;">
             <tr class="card-panel teal lighten-2 white-text" style="font-weight:bold">
-                <td>Id valoracion</td>
+                <td>Id_valoracion</td>
                 <td>Nota</td>
-                <td>id usuario</td>
+                <td>id_usuario</td>
             </tr>
             
         <?php
@@ -180,7 +181,7 @@ echo "<h3>"."<a href='inserta_bd.php?id=0'><img width=40 src='/proyecto/img/inse
 		?>
 		<table class="centered bordered card-panel white"  style="text-align:center;">
             <tr class="card-panel teal lighten-2 white-text" style="font-weight:bold">
-                <td>Id Usuario</td>
+                <td>Id_Usuario</td>
                 <td>Nombre</td>
                 <td>Contraseña</td>
                 <td>Correo</td>
@@ -204,6 +205,122 @@ echo "<h3>"."<a href='inserta_bd.php?id=0'><img width=40 src='/proyecto/img/inse
             unset($connection);
 		?>
 		</table>
+	</div>
+	<div id="info7" style="">
+		    <?php
+        //conexion a la base de datos-peliculas
+        $connection = new mysqli("localhost","root","","Cine");
+        if($connection->connect_errno){
+            echo "<h1>Se produjo un error a la hora de conectarse a la base de datos: $connection->connect_errno</h1>";
+        }
+        $result=$connection->query("SELECT * FROM Tienen");
+
+echo "<h3>"."<a href='inserta_bd.php?id=0'><img width=40 src='/proyecto/img/inserta.jpg'/></a>"."Tienen(Peliculas-Comentarios)</h3>";
+		?>
+		<table class="centered bordered card-panel white"  style="text-align:center;">
+            <tr class="card-panel teal lighten-2 white-text" style="font-weight:bold">
+                <td>Id_Pelicula</td>
+                <td>Id_Comentario</td>
+            </tr>
+            
+        <?php
+            while($obj=$result->fetch_object()){
+                echo "<tr>";
+                echo "<td>$obj->id_pelicula</td>";
+                echo "<td>$obj->id_comentario</td>";
+                echo "<td><a href='edita_bd.php?id=$obj->id_pelicula'><img width=26 src='/proyecto/img/edita.png'/></a></td>";
+                echo "<td><a href='borra_bd.php?id=$obj->id_pelicula'><img width=26 src='/proyecto/img/borra.png'/></a></td>";
+                echo "</tr>";   
+            }
+        ?>
+        </table>
+	</div>
+	<div id="info8" style="">
+		    <?php
+        //conexion a la base de datos-peliculas
+        $connection = new mysqli("localhost","root","","Cine");
+        if($connection->connect_errno){
+            echo "<h1>Se produjo un error a la hora de conectarse a la base de datos: $connection->connect_errno</h1>";
+        }
+        $result=$connection->query("SELECT * FROM Es");
+
+echo "<h3>"."<a href='inserta_bd.php?id=0'><img width=40 src='/proyecto/img/inserta.jpg'/></a>"."Es(Peliculas-Generos)</h3>";
+		?>
+		<table class="centered bordered card-panel white"  style="text-align:center;">
+            <tr class="card-panel teal lighten-2 white-text" style="font-weight:bold">
+                <td>Id_Pelicula</td>
+                <td>Id_Genero</td>
+            </tr>
+            
+        <?php
+            while($obj=$result->fetch_object()){
+                echo "<tr>";
+                echo "<td>$obj->id_pelicula</td>";
+                echo "<td>$obj->id_genero</td>";
+                echo "<td><a href='edita_bd.php?id=$obj->id_pelicula'><img width=26 src='/proyecto/img/edita.png'/></a></td>";
+                echo "<td><a href='borra_bd.php?id=$obj->id_pelicula'><img width=26 src='/proyecto/img/borra.png'/></a></td>";
+                echo "</tr>";   
+            }
+        ?>
+        </table>
+	</div>
+	<div id="info9" style="">
+		    <?php
+        //conexion a la base de datos-peliculas
+        $connection = new mysqli("localhost","root","","Cine");
+        if($connection->connect_errno){
+            echo "<h1>Se produjo un error a la hora de conectarse a la base de datos: $connection->connect_errno</h1>";
+        }
+        $result=$connection->query("SELECT * FROM dirigida_por");
+
+echo "<h3>"."<a href='inserta_bd.php?id=0'><img width=40 src='/proyecto/img/inserta.jpg'/></a>"."Dirigida_por(Peliculas-Directores)</h3>";
+		?>
+		<table class="centered bordered card-panel white"  style="text-align:center;">
+            <tr class="card-panel teal lighten-2 white-text" style="font-weight:bold">
+                <td>Id_Director</td>
+                <td>Id_Pelicula</td>
+            </tr>
+            
+        <?php
+            while($obj=$result->fetch_object()){
+                echo "<tr>";
+                echo "<td>$obj->id_director</td>";
+                echo "<td>$obj->id_pelicula</td>";
+                echo "<td><a href='edita_bd.php?id=$obj->id_pelicula'><img width=26 src='/proyecto/img/edita.png'/></a></td>";
+                echo "<td><a href='borra_bd.php?id=$obj->id_pelicula'><img width=26 src='/proyecto/img/borra.png'/></a></td>";
+                echo "</tr>";   
+            }
+        ?>
+        </table>
+	</div>
+		<div id="info10" style="">
+		    <?php
+        //conexion a la base de datos-peliculas
+        $connection = new mysqli("localhost","root","","Cine");
+        if($connection->connect_errno){
+            echo "<h1>Se produjo un error a la hora de conectarse a la base de datos: $connection->connect_errno</h1>";
+        }
+        $result=$connection->query("SELECT * FROM Posee");
+
+echo "<h3>"."<a href='inserta_bd.php?id=0'><img width=40 src='/proyecto/img/inserta.jpg'/></a>"."Posee(Peliculas-Valoraciones)</h3>";
+		?>
+		<table class="centered bordered card-panel white"  style="text-align:center;">
+            <tr class="card-panel teal lighten-2 white-text" style="font-weight:bold">
+                <td>Id_Pelicula</td>
+                <td>Id_Valoracion</td>
+            </tr>
+            
+        <?php
+            while($obj=$result->fetch_object()){
+                echo "<tr>";
+                echo "<td>$obj->id_pelicula</td>";
+                echo "<td>$obj->id_valoracion</td>";
+                echo "<td><a href='edita_bd.php?id=$obj->id_pelicula'><img width=26 src='/proyecto/img/edita.png'/></a></td>";
+                echo "<td><a href='borra_bd.php?id=$obj->id_pelicula'><img width=26 src='/proyecto/img/borra.png'/></a></td>";
+                echo "</tr>";   
+            }
+        ?>
+        </table>
 	</div>
 	</div>
 </body>
