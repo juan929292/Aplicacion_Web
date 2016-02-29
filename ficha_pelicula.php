@@ -1,8 +1,6 @@
 <?php 
 session_start();
-
-include_once("db_configuration.php");
-
+include_once("\Aplicacion_Web\db_configuration.php");
 ?>
 <html>
 <head> 

@@ -1,4 +1,7 @@
-
+<?php 
+session_start();
+include_once("\Aplicacion_Web\db_configuration.php");
+?>
 <html>
 <head>
     <title></title>
