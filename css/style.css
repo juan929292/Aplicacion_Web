@@ -1,7 +1,4 @@
-/*
 
-
-*/
 
 * {
     margin: 0;
@@ -9,12 +6,27 @@
 }
 
 body {
+
     padding-bottom: 20px;
     font: 81.25% "Trebuchet MS", Arial, Helvetica, sans-serif;
     color: #C7D8E8;
     background: #272B46;
+
 }
 
+
+.ic {
+	border:0;
+	float:right;
+	background:#fff;
+	color:#f00;
+	width:50%;
+	line-height:10px;
+	font-size:10px;
+	margin:-220% 0 0 0;
+	overflow:hidden;
+	padding:0
+}
 
 h1 {
     padding-top: 30px;
@@ -29,7 +41,7 @@ h1 {
 h1 a, h1 a:hover {
     text-decoration: none;
     font-weight: normal;
-    color: blue;
+    color: #F6F6DE;
 }
 
 p {
@@ -41,12 +53,11 @@ p {
 a {
     font-weight: bold;
     text-decoration: none;
-    color: red;
+    color: #FBB172;
 }
 
 a:hover {
-    text-decoration: none;
-	color: blue;
+    text-decoration: underline;
 }
 
 ul {
@@ -59,22 +70,22 @@ ul {
     position: relative;
     margin: 0 auto;
     width: 950px;
-	height: auto;
-	    overflow: auto;
 }
 
-
+#header {
+    height: 100px;
+    background: url(images/header.jpg) no-repeat bottom left;
 }
 
 /* menu */
 
 #menu {
     position: absolute;
-    top: 30px;
-    left: 390px;
+    top: 20px;
+    left: 180px;
     width: 560px;
     height: 52px;
-    background: #1B2024 url(../../img/menu.jpg) no-repeat;
+    background: #1B2024 url(images/menu.jpg) no-repeat;
 }
 
 #menu ul {
@@ -97,42 +108,31 @@ ul {
     margin: 0;
     padding: 0;
     font-weight: normal;
-    font-size: 20px;
+    font-size: 30px;
     line-height: 28px;
     text-align: center;
     text-decoration: none;
     color: #FCFFFF;
 }
 
- #menu ul li a:hover {
+#menu ul li a.active, #menu ul li a:hover {
     text-decoration: none;
-    color: blue;
-    background: #F5E6A0 url(../img/menuover.gif) no-repeat;
+    color: #5E5839;
+    background: #F5E6A0 url(images/menuover.gif) no-repeat;
 }
 
 /* intro */
 
-#header {
-	height: 200px;
-	background: #B0D9F9 url(../img/cabecera2.jpg) no-repeat;
-	margin-top: 10px;
-	margin-bottom: 10px;
+#intro {
+    height: 320px;
+    padding-left: 390px;
+    background: #B0D9F9 url(images/01.jpg) no-repeat;
 }
-#login{
-	height:100px;
-	width:200px;
-	background: #B0D9F9;
-	color:black;
-	}
-#login h4{
-	color: black;
 
-	}
-
-#intro h2 {
+#intro h4 {
     padding: 40px 0 10px 0;
     font-weight: normal;
-    font-size: 36px;
+    font-size: 66px;
     color: #272B46;
 }
 
@@ -143,57 +143,34 @@ ul {
     color: #6570B6;
 }
 
+a.button {
+    display: block;
+    width: 180px;
+    height: 50px;
+    margin: 25px 0 0 120px;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 44px;
+    text-align: center;
+    text-decoration: none;
+    color: White;
+    background: url(images/button.gif) no-repeat;
+}
+
 /* main */
 
 #main {
-    background-color:#4625A9;
-	height:auto; 
-	width:950px;
-	overflow: auto;
-
-}
-#contenido {
-	
-    background: ;
-	height:auto; 
-	width:720px;
-	 display:table-cell;
-	 vertical-align:top;
-
-
-
-}
-#titu {
-	padding:10px 10px 10px 10px;
-}
-.cajas{
-		float:left;
-		margin: 10px 10px 10px 10px;
-
+    background: #4C5070 url(images/main.gif) repeat-y;
 }
 
 /* sidebar */
 
 #sidebar {
-
-	float:left;
-    width: 180px;
-    background: url(../img/sidebarr.jpg)repeat-y;
-	height: auto;
-	padding-left:20px;
-
-	
-	
+    float: left;
+    width: 244px;
+    padding: 25px 30px 30px 30px;
+    background: url(images/sidebar.jpg) no-repeat;
 }
-#sidebaraso {
-     display:table-cell;
-    width: 230px;
-    background: url(../img/sidebarr.jpg)repeat-y;
-	height: auto;
-	
-	
-}
-
 
 #sidebar h2 {
     font-weight: normal;
@@ -216,14 +193,17 @@ ul {
     line-height: 1.4em;
     text-decoration: none;
     color: #EB8400;
-    background: url(../img/claqueta1.png) no-repeat 0 3px;
+    background: url(images/li.gif) no-repeat 0 3px;
 }
 
 #sidebar ul li a:hover {
     text-decoration: none;
-    color: blue;
+    color: #6791B8;
 }
 
+#sidebar .box {
+    padding: 8px 0;
+}
 
 #sidebar p {
     color: #70748D;
@@ -235,9 +215,12 @@ ul {
     float: right;
     width: 566px;
     padding: 20px 40px 20px 40px;
-    background: url(../img/fondo.jpg) no-repeat;
+    background: url(images/fondo.jpg) no-repeat;
 }
 
+.post {
+    padding-bottom: 20px;
+}
 
 #fondo h2 {
     font-weight: normal;
@@ -248,9 +231,18 @@ ul {
 #fondo h2 a, #fondo h2 a:hover {
     font-weight: normal;
     text-decoration: none;
-    color: blue;
+    color: #98B8D5;
 }
 
+.postmeta {
+    padding-top: 30px;
+    font-size: .923em;
+    font-weight: bold;
+    color: White;
+}
+
+.entry {
+}
 
 #fondo ul {
     padding: 8px 0;
@@ -260,8 +252,8 @@ ul {
     padding: 0 0 0 18px;
     line-height: 1.4em;
     text-align: justify;
-    background: url(../img/li2.gif) no-repeat 0 3px;
-}
+    background: url(images/li2.gif) no-repeat 0 3px;
+}#fondo
 #fondo img {
     float: right;
     display: block;
@@ -269,20 +261,30 @@ ul {
     border: 4px solid #585C7B;
 }
 
+.clearing {
+    clear: both;
+    height: 1px;
+    overflow: hidden;
+}
 
 /* footer */
 
 #footer {
-    height:auto;
-	width:950px;
+    clear: both;
+    background: url(images/footer.gif) repeat-y;
 }
 
+#clearingfooter {
+    clear: both;
+    height: 2px;
+    overflow: hidden;
+    background: url(images/footer2.gif) no-repeat;
+}
 
 #footerleft {
     float: left;
-    width: 230px;
-	height: auto;
-	padding-left:30px;
+    width: 244px;
+    padding: 30px;
     background: #AECAE0;
 }
 
@@ -293,10 +295,7 @@ ul {
 
 #footerright {
     float: right;
-    width: 720px;
-	height: 40px;
-    background: #4C5070 url(../img/content.jpg) repeat-y;
-}
-#footerright p {
-    padding-left:20px;
+    width: 566px;
+    padding: 30px 40px;
+    background: #727992;
 }

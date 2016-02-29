@@ -53,6 +53,7 @@ UNLOCK TABLES;
 -- Table structure for table `directores`
 --
 
+<<<<<<< HEAD:Proyecto/sql/Cine.sql
 DROP TABLE IF EXISTS `directores`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -63,6 +64,13 @@ CREATE TABLE `directores` (
   PRIMARY KEY (`id_director`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+=======
+CREATE TABLE IF NOT EXISTS `Dirigida_por` (
+`id_director` int(10) NOT NULL,
+`id_pelicula` int(10) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+-- --------------------------------------------------------
+>>>>>>> 35f18074de07e4aea7ce236a694900ec197bc869:sql/Cine.sql
 
 --
 -- Dumping data for table `directores`
@@ -118,6 +126,7 @@ CREATE TABLE `es` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+
 --
 -- Dumping data for table `es`
 --
@@ -156,6 +165,7 @@ UNLOCK TABLES;
 -- Table structure for table `peliculas`
 --
 
+<<<<<<< HEAD:Proyecto/sql/Cine.sql
 DROP TABLE IF EXISTS `peliculas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -169,16 +179,44 @@ CREATE TABLE `peliculas` (
   PRIMARY KEY (`id_pelicula`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+=======
+CREATE TABLE IF NOT EXISTS `Peliculas` (
+`id_pelicula` int(10),
+  `titulo` varchar(50) NOT NULL,
+  `duracion` varchar(10) NOT NULL,
+  `anio` int(10) NOT NULL,
+  `nota_media` int(10),
+  `imagen` varchar(1000) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+>>>>>>> 35f18074de07e4aea7ce236a694900ec197bc869:sql/Cine.sql
 
 --
 -- Dumping data for table `peliculas`
 --
 
+<<<<<<< HEAD:Proyecto/sql/Cine.sql
 LOCK TABLES `peliculas` WRITE;
 /*!40000 ALTER TABLE `peliculas` DISABLE KEYS */;
 INSERT INTO `peliculas` VALUES (1,'Pulp fiction','153 min',1994,0,'<img width=\'150\' height=\'200\' src=\'/Proyecto/img/pull.png\'>'),(2,'Death Proof ','114 min',2007,0,'<img width=\'150\' height=\'200\' src=\'/Proyecto/img/deat.png\'>'),(3,'Jackie Brown','154 min',1997,0,'<img width=\'150\' height=\'200\' src=\'/Proyecto/img/brown.png\'>'),(4,'Malditos Bastardos','153 min',2009,0,'<img width=\'150\' height=\'200\' src=\'/Proyecto/img/malditos.png\'>'),(5,'Kill Bill: Volumen 1','110 min',2003,0,'<img width=\'150\' height=\'200\' src=\'/Proyecto/img/kill_1.png\'>'),(6,'Kill Bill: Volumen 2','137 min',2004,0,'<img width=\'150\' height=\'200\' src=\'/Proyecto/img/kill_2.png\'>'),(7,'Memento','115 min',2000,0,'<img width=\'150\' height=\'200\' src=\'/Proyecto/img/memento.png\'>'),(8,'Insomnio','118 min',2002,0,'<img width=\'150\' height=\'200\' src=\'/Proyecto/img/inso.png\'>'),(9,'Batman Begins ','140 min',2005,0,'<img width=\'150\' height=\'200\' src=\'/Proyecto/img/begin.png\'>'),(10,'La Guerra de los Mundos','116 min',2005,0,'<img width=\'150\' height=\'200\' src=\'/Proyecto/img/guerra_mundos.png\'>'),(11,'Jurassic Park ','120 min',1993,0,'<img width=\'150\' height=\'200\' src=\'/Proyecto/img/jurasico.png\'>'),(12,'Atrápame si puedes ','120 min',2002,0,'<img width=\'150\' height=\'200\' src=\'/Proyecto/img/atrapame.png\'>'),(18,'Los Mercenarios','103 min',2010,0,'<img width=\'150\' height=\'200\' src=\'/Proyecto/img/los_mercenarios.jpg\'>');
 /*!40000 ALTER TABLE `peliculas` ENABLE KEYS */;
 UNLOCK TABLES;
+=======
+INSERT INTO `Peliculas` (`id_pelicula`, `titulo`, `duracion`, `anio`, `nota_media`, `imagen`) VALUES
+(1, 'Pulp fiction', '153 min', 1994, '', "<img width='150' height='200' src='/Proyecto/img/pull.png'>"),
+(2, 'Death Proof ', '114 min', 2007, '', "<img width='150' height='200' src='/Proyecto/img/deat.png'>"),
+(3, 'Jackie Brown', '154 min', 1997, '', "<img width='150' height='200' src='/Proyecto/img/brown.png'>"),
+(4, 'Malditos Bastardos', '153 min', 2009, '', "<img width='150' height='200' src='/Proyecto/img/malditos.png'>"),
+(5, 'Kill Bill: Volumen 1', '110 min', 2003, '', "<img width='150' height='200' src='/Proyecto/img/kill_1.png'>"),
+(6, 'Kill Bill: Volumen 2', '137 min', 2004, '', "<img width='150' height='200' src='/Proyecto/img/kill_2.png'>"),
+(7, 'Memento', '115 min',  2000, '', "<img width='150' height='200' src='/Proyecto/img/memento.png'>"),
+(8, 'Insomnio', '118 min', 2002, '', "<img width='150' height='200' src='/Proyecto/img/inso.png'>"),
+(9, 'Batman Begins ', '140 min', 2005, '', "<img width='150' height='200' src='/Proyecto/img/begin.png'>"),
+(10, 'La Guerra de los Mundos', '116 min', 2005, '', "<img width='150' height='200' src='/Proyecto/img/guerra_mundos.png'>"),
+(11, 'Jurassic Park ', '120 min', 1993, '', "<img width='150' height='200' src='/Proyecto/img/jurasico.png'>"),
+(12, 'Atrápame si puedes ', '120 min', 2002, '', "<img width='150' height='200' src='/Proyecto/img/atrapame.png'>");
+
+-- --------------------------------------------------------
+>>>>>>> 35f18074de07e4aea7ce236a694900ec197bc869:sql/Cine.sql
 
 --
 -- Table structure for table `posee`
@@ -238,6 +276,7 @@ UNLOCK TABLES;
 -- Table structure for table `usuarios`
 --
 
+<<<<<<< HEAD:Proyecto/sql/Cine.sql
 DROP TABLE IF EXISTS `usuarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -250,6 +289,12 @@ CREATE TABLE `usuarios` (
   PRIMARY KEY (`id_usuario`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+=======
+
+ALTER TABLE Es
+ADD FOREIGN KEY (id_pelicula) REFERENCES Peliculas (id_pelicula) ON DELETE CASCADE,
+ADD FOREIGN KEY (id_genero) REFERENCES Generos (id_genero);
+>>>>>>> 35f18074de07e4aea7ce236a694900ec197bc869:sql/Cine.sql
 
 --
 -- Dumping data for table `usuarios`
@@ -261,9 +306,15 @@ INSERT INTO `usuarios` VALUES (1,'velasco','velasco','velasco@velasco.com','admi
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
+<<<<<<< HEAD:Proyecto/sql/Cine.sql
 --
 -- Table structure for table `valoraciones`
 --
+=======
+ALTER TABLE Dirigida_por
+ADD FOREIGN KEY (id_pelicula) REFERENCES Peliculas (id_pelicula) ON DELETE CASCADE,
+ADD FOREIGN KEY (id_director) REFERENCES Directores (id_director) ;
+>>>>>>> 35f18074de07e4aea7ce236a694900ec197bc869:sql/Cine.sql
 
 DROP TABLE IF EXISTS `valoraciones`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -278,9 +329,15 @@ CREATE TABLE `valoraciones` (
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+<<<<<<< HEAD:Proyecto/sql/Cine.sql
 --
 -- Dumping data for table `valoraciones`
 --
+=======
+ALTER TABLE Comentarios
+ADD FOREIGN KEY (id_pelicula) REFERENCES Peliculas (id_pelicula),
+ADD FOREIGN KEY (id_usuario) REFERENCES Usuarios (id_usuario);
+>>>>>>> 35f18074de07e4aea7ce236a694900ec197bc869:sql/Cine.sql
 
 LOCK TABLES `valoraciones` WRITE;
 /*!40000 ALTER TABLE `valoraciones` DISABLE KEYS */;
