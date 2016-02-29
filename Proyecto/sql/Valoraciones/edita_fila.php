@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+				<?php
+        $connection = new mysqli("localhost","root","","Cine");
+                        if($connection->connect_errno){
+                            echo "<h1>Se produjo un error a la hora de conectarse a la base de datos: $connection->connect_errno</h1>";
+								}
+								$idval=$_POST['val1'];
+								$not=$_POST['val2'];
+								$idusu=$_POST['val3'];
+								$consulta="update Valoraciones set nota=$not WHERE id_valoracion=$idval;";
+								echo "</br>";
+								if($connection->query($consulta)==true){
+									echo "<h2>Actualizacion realizada correctamente, Redireccionando...</h2>";
+								}else{
+									echo $connection->error;   
+								}
+								unset($connection);
+
+								header('Refresh:5; url=/Proyecto/sql/Valoraciones/resultado.php',True,303);
+					?>
+								
+</body>
+</html>

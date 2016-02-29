@@ -11,9 +11,8 @@ session_start();
    <div id="page">
         <div id="header">  
 			<div id="login">
-				<h2>Bienvenido <?phpecho $_SESSION['nombresesion'];?></h2>
+				<h4>Bienvenido </h4>
 				</br>
-
 				<h3><p><a href="login.php">Inicia Sesi&oacute;n</a> ó <a href="registro.php">reg&iacute;strate</a></p></h3>
 			</div>
 		</div>
@@ -39,16 +38,17 @@ session_start();
             </div>
 		</div>
 				<div id="contenido">
-						<?php
+						<?php						
 					$connection = new mysqli("localhost","root","","Cine");
 						if($connection->connect_errno){
 							echo "<h1>Se produjo un error a la hora de conectarse a la base de datos: $connection->connect_errno</h1>";
 						}
-					$result=$connection->query("SELECT * FROM peliculas");
+					$result=$connection->query("SELECT * FROM Peliculas join Es on peliculas.id_pelicula=Es.id_pelicula join Generos on Es.id_genero=Generos.id_genero where Generos.nombre="."'".$_GET['id']."'".";");
+					echo "<h2 id='titu'>G&eacute;nero: ".$_GET['id']."</h2>";
 						while($obj=$result->fetch_object()){
 						echo "<div class='cajas'>";
-						echo "<h4>$obj->titulo</h4>";
-						echo "<a href='ficha_pelicula.php?id=".$obj->id_pelicula ."'>".$obj->imagen;
+							echo "<h4>".$obj->titulo."</h4>";
+							echo "<a href='ficha_pelicula.php?id=".$obj->id_pelicula ."'>".$obj->imagen;
 						echo "</div>";
 						};
 						?>

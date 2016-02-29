@@ -15,18 +15,6 @@ body {
     background: #272B46;
 }
 
-.ic {
-	border:0;
-	float:right;
-	background:#fff;
-	color:#f00;
-	width:50%;
-	line-height:10px;
-	font-size:10px;
-	margin:-220% 0 0 0;
-	overflow:hidden;
-	padding:0
-}
 
 h1 {
     padding-top: 30px;
@@ -41,7 +29,7 @@ h1 {
 h1 a, h1 a:hover {
     text-decoration: none;
     font-weight: normal;
-    color: #F6F6DE;
+    color: blue;
 }
 
 p {
@@ -53,11 +41,12 @@ p {
 a {
     font-weight: bold;
     text-decoration: none;
-    color: #FBB172;
+    color: red;
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
+	color: blue;
 }
 
 ul {
@@ -70,6 +59,8 @@ ul {
     position: relative;
     margin: 0 auto;
     width: 950px;
+	height: auto;
+	    overflow: auto;
 }
 
 
@@ -113,21 +104,30 @@ ul {
     color: #FCFFFF;
 }
 
-#menu ul li a.active, #menu ul li a:hover {
+ #menu ul li a:hover {
     text-decoration: none;
-    color: #5E5839;
+    color: blue;
     background: #F5E6A0 url(../img/menuover.gif) no-repeat;
 }
 
 /* intro */
 
 #header {
-	height: 220px;
-	padding-left: 390px;
-	background: #B0D9F9 url(../img/cabecera.jpg) no-repeat;
+	height: 200px;
+	background: #B0D9F9 url(../img/cabecera2.jpg) no-repeat;
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+#login{
+	height:100px;
+	width:200px;
+	background: #B0D9F9;
+	color:black;
+	}
+#login h4{
+	color: black;
+
+	}
 
 #intro h2 {
     padding: 40px 0 10px 0;
@@ -143,34 +143,57 @@ ul {
     color: #6570B6;
 }
 
-a.button {
-    display: block;
-    width: 180px;
-    height: 50px;
-    margin: 25px 0 0 120px;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 44px;
-    text-align: center;
-    text-decoration: none;
-    color: White;
-    background: url(../img/button.gif) no-repeat;
-}
-
 /* main */
 
 #main {
-    background: #4C5070 url(../img/main.gif) repeat-y;
+    background-color:#4625A9;
+	height:auto; 
+	width:950px;
+	overflow: auto;
+
+}
+#contenido {
+	
+    background: ;
+	height:auto; 
+	width:720px;
+	 display:table-cell;
+	 vertical-align:top;
+
+
+
+}
+#titu {
+	padding:10px 10px 10px 10px;
+}
+.cajas{
+		float:left;
+		margin: 10px 10px 10px 10px;
+
 }
 
 /* sidebar */
 
 #sidebar {
-    float: left;
-    width: 244px;
-    padding: 25px 30px 30px 30px;
-    background: url(../img/sidebar.jpg) no-repeat;
+
+	float:left;
+    width: 180px;
+    background: url(../img/sidebarr.jpg)repeat-y;
+	height: auto;
+	padding-left:20px;
+
+	
+	
 }
+#sidebaraso {
+     display:table-cell;
+    width: 230px;
+    background: url(../img/sidebarr.jpg)repeat-y;
+	height: auto;
+	
+	
+}
+
 
 #sidebar h2 {
     font-weight: normal;
@@ -198,12 +221,9 @@ a.button {
 
 #sidebar ul li a:hover {
     text-decoration: none;
-    color: #6791B8;
+    color: blue;
 }
 
-#sidebar .box {
-    padding: 8px 0;
-}
 
 #sidebar p {
     color: #70748D;
@@ -218,9 +238,6 @@ a.button {
     background: url(../img/fondo.jpg) no-repeat;
 }
 
-.post {
-    padding-bottom: 20px;
-}
 
 #fondo h2 {
     font-weight: normal;
@@ -231,18 +248,9 @@ a.button {
 #fondo h2 a, #fondo h2 a:hover {
     font-weight: normal;
     text-decoration: none;
-    color: #98B8D5;
+    color: blue;
 }
 
-.postmeta {
-    padding-top: 30px;
-    font-size: .923em;
-    font-weight: bold;
-    color: White;
-}
-
-.entry {
-}
 
 #fondo ul {
     padding: 8px 0;
@@ -253,7 +261,7 @@ a.button {
     line-height: 1.4em;
     text-align: justify;
     background: url(../img/li2.gif) no-repeat 0 3px;
-}#fondo
+}
 #fondo img {
     float: right;
     display: block;
@@ -261,30 +269,20 @@ a.button {
     border: 4px solid #585C7B;
 }
 
-.clearing {
-    clear: both;
-    height: 1px;
-    overflow: hidden;
-}
 
 /* footer */
 
 #footer {
-    clear: both;
-    background: url(../img/footer.gif) repeat-y;
+    height:auto;
+	width:950px;
 }
 
-#clearingfooter {
-    clear: both;
-    height: 2px;
-    overflow: hidden;
-    background: url(../img/footer2.gif) no-repeat;
-}
 
 #footerleft {
     float: left;
-    width: 244px;
-    padding: 30px;
+    width: 230px;
+	height: auto;
+	padding-left:30px;
     background: #AECAE0;
 }
 
@@ -295,7 +293,10 @@ a.button {
 
 #footerright {
     float: right;
-    width: 566px;
-    padding: 30px 40px;
-    background: #727992;
+    width: 720px;
+	height: 40px;
+    background: #4C5070 url(../img/content.jpg) repeat-y;
+}
+#footerright p {
+    padding-left:20px;
 }

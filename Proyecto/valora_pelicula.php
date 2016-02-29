@@ -11,9 +11,8 @@ session_start();
    <div id="page">
         <div id="header">  
 			<div id="login">
-				<h2>Bienvenido <?phpecho $_SESSION['nombresesion'];?></h2>
+				<h4>Bienvenido </h4>
 				</br>
-
 				<h3><p><a href="login.php">Inicia Sesi&oacute;n</a> ó <a href="registro.php">reg&iacute;strate</a></p></h3>
 			</div>
 		</div>
@@ -38,21 +37,28 @@ session_start();
 				?>
             </div>
 		</div>
-				<div id="contenido">
-						<?php
+			<div id="contenido">
+						<?php						
+					$idepel=$_GET['idpel'];
+					$ideval=$_GET['idval'];
+					$ideusu=$_SESSION['id_usu'];
 					$connection = new mysqli("localhost","root","","Cine");
-						if($connection->connect_errno){
-							echo "<h1>Se produjo un error a la hora de conectarse a la base de datos: $connection->connect_errno</h1>";
-						}
-					$result=$connection->query("SELECT * FROM peliculas");
-						while($obj=$result->fetch_object()){
-						echo "<div class='cajas'>";
-						echo "<h4>$obj->titulo</h4>";
-						echo "<a href='ficha_pelicula.php?id=".$obj->id_pelicula ."'>".$obj->imagen;
-						echo "</div>";
-						};
-						?>
-						</div>
+                        if($connection->connect_errno){
+                            echo "<h1>Se produjo un error a la hora de conectarse a la base de datos: $connection->connect_errno</h1>";
+								} 
+								$consulta="insert into valoraciones(id_valoracion,nota,id_usuario) VALUES('NULL',$ideval,$ideusu);";
+								echo "</br>";
+								if($connection->query($consulta)==true){
+									echo "<h2>Valoración realizada correctamente, Redireccionando...</h2>";
+								}else{
+									echo $connection->error;   
+								}
+								unset($connection);
+
+								header('Refresh:3; url=/Proyecto/ficha_pelicula.php?id=$idepel',True,303)
+
+						?>		
+			</div>
         </div>
         <div id="footer">
             <div id="footerleft">
@@ -63,5 +69,6 @@ session_start();
             </div>
 		</div>
 	</div>
+	<?php endif ?>
 </body>
 </html>
