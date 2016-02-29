@@ -9,7 +9,7 @@
 		<h2>Añadir Comentario</h2>
 							    <?php
 					//conexion a la base de datos-peliculas
-					$connection = new mysqli("localhost","root","","Cine");
+					$connection = new mysqli($db_host, $db_user, $db_password, $db_name);
 					if($connection->connect_errno){
 						echo "<h1>Se produjo un error a la hora de conectarse a la base de datos: $connection->connect_errno</h1>";
 					}
@@ -43,7 +43,7 @@
 							$fec=$_POST['val3'];
 							$usu=$_POST['val4'];
 							$peli=$_POST['val5'];
-							$connection = new mysqli("localhost","root","","Cine");
+							$connection = new mysqli($db_host, $db_user, $db_password, $db_name);
                         if($connection->connect_errno){
                             echo "<h1>Se produjo un error a la hora de conectarse a la base de datos: $connection->connect_errno</h1>";
 								} 

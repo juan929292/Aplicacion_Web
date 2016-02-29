@@ -1,5 +1,8 @@
 <?php 
 session_start();
+
+include_once("db_configuration.php");
+
 ?>
 <html>
 <head> 
@@ -40,7 +43,7 @@ session_start();
 			<div id="contenido">
 				<?php if (!isset($_POST["nuevocoment"])) : ?>
 						<?php						
-					$connection = new mysqli("localhost","root","","Cine");
+					$connection = new mysqli($db_host, $db_user, $db_password, $db_name);
 						if($connection->connect_errno){
 							echo "<h1>Se produjo un error a la hora de conectarse a la base de datos: $connection->connect_errno</h1>";
 						}
@@ -107,7 +110,7 @@ session_start();
 						$idepel=$_GET['id_p'];
 						$conteni=$_GET['nuevocoment'];
 						$ideusu=$_SESSION['id_usu'];
-						$connection = new mysqli("localhost","root","","Cine");
+						$connection = new mysqli($db_host, $db_user, $db_password, $db_name);
                         if($connection->connect_errno){
                             echo "<h1>Se produjo un error a la hora de conectarse a la base de datos: $connection->connect_errno</h1>";
 								} 

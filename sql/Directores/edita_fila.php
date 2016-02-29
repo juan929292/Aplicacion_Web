@@ -4,7 +4,7 @@
 </head>
 <body>
 				<?php
-        $connection = new mysqli("localhost","root","","Cine");
+        $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
                         if($connection->connect_errno){
                             echo "<h1>Se produjo un error a la hora de conectarse a la base de datos: $connection->connect_errno</h1>";
 								}

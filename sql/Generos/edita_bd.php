@@ -6,7 +6,7 @@
 <?php if (!isset($_GET["idd"])) : ?>
 	<div id="info1" style="">
 		    <?php
-        $connection = new mysqli("localhost","root","","Cine");
+        $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
         if($connection->connect_errno){
             echo "<h1>Se produjo un error a la hora de conectarse a la base de datos: $connection->connect_errno</h1>";
         }
@@ -34,7 +34,7 @@ echo "<h3>Editar Genero</h3>";
 	<?php else : ?>
 	  <?php
         //conexion a la base de datos-peliculas
-        $connection = new mysqli("localhost","root","","Cine");
+        $connection = new mysqli($db_host, $db_user, $db_password, $db_name);
         if($connection->connect_errno){
             echo "<h1>Se produjo un error a la hora de conectarse a la base de datos: $connection->connect_errno</h1>";
         }
