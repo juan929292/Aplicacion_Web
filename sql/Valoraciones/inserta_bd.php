@@ -1,44 +1,64 @@
-<!DOCTYPE html>
+
+<html>
 <head>
     <title></title>
 </head>
-
+<body>
    <div>
-    <?php if (isset($_GET["id"])) : ?>
-		<h2>Añadir <?php echo $_GET["id"]?></h2>
+    <?php if (!isset($_POST["val2"])) : ?>
+		<h2>Añadir Valoracion</h2>
                     <?php
-                       $connection = new mysqli("localhost","root","","Cine");
-                        if($connection->connect_errno){
-                            echo "<h1>Se produjo un error a la hora de conectarse a la base de datos: $connection->connect_errno</h1>";
-                        } 
-                       $consulta_mysql="select * from ".$_GET["id"];
-                       $result=$connection->query($consulta_mysql);
-						$registro = mysqli_fetch_fields($result);
-						$variable=[];
-						for($i=0;$i<count($result);$i++){
-							foreach($registro as $valor){
-							$variable[] = $valor->name;
-							};
-						};
-							echo "<form action='inserta_bd.php'>";
-						for($i=1;$i<count($variable);$i++){
-							echo "<h3>".$variable[$i].": </h3>";
-							echo "<input type='text' name='".$variable[$i]."'>"."</br>";
-						};	
-						echo "</br>"."<input type='submit' value='Enviar'>";
-						echo "</form>";
-						$_POST=$variable;
-                        $result->close();
-                        unset($connection);
+					$connection = new mysqli("localhost","root","","Cine");
+					if($connection->connect_errno){
+						echo "<h1>Se produjo un error a la hora de conectarse a la base de datos: $connection->connect_errno</h1>";
+					}
+					$result=$connection->query("SELECT * FROM usuarios");
+							echo "<form method='post' action='#'>";
+								echo "<input required value='NULL' type='hidden' placeholder='NULL' name='val1' readonly='readonly'>"."</br>";
+								echo "<h3>nota:</h3>";
+								echo "<select required multiple name='val2'>";
+								echo "<option value='0'>0</option>";
+								echo "<option value='1'>1</option>";
+								echo "<option value='2'>2</option>";
+								echo "<option value='3'>3</option>";
+								echo "<option value='3'>3</option>";
+								echo "<option value='4'>4</option>";
+								echo "<option value='5'>5</option>";
+								echo "<option value='6'>6</option>";
+								echo "<option value='7'>7</option>";
+								echo "<option value='8'>8</option>";
+								echo "<option value='9'>9</option>";
+								echo "<option value='10'>10</option>";
+								echo " </select></br>";
+								echo "<h3>Usuario(id_usuario):</h3>";
+								echo "<select required multiple name='val3'>";
+								while($obj=$result->fetch_object()){
+								echo "<option value=".$obj->id_usuario .">".$obj->nombre ."</option>";
+								}
+								echo " </select></br>";
+							echo "</br>"."<input type='submit' value='Enviar'>";
+							echo "</form>";
                     ?>
 					<?php else: ?>
 					<?php
-					$value=[];
-						for($i=1;$i<count($_POST);$i++){
-							$value[$i] = $_POST[$_POST[$i]];
-						};
-						var_dump($value);
-					?>
+							$id=$_POST['val1'];
+							$not=$_POST['val2'];
+							$usu=$_POST['val3'];
+							$connection = new mysqli("localhost","root","","Cine");
+                        if($connection->connect_errno){
+                            echo "<h1>Se produjo un error a la hora de conectarse a la base de datos: $connection->connect_errno</h1>";
+								} 
+								$consulta="insert into valoraciones(id_valoracion,nota,id_usuario) VALUES($id,$not,$usu);";
+								echo "</br>";
+								if($connection->query($consulta)==true){
+									echo "<h2>Inserción realizada correctamente, Redireccionando...</h2>";
+								}else{
+									echo $connection->error;   
+								}
+								unset($connection);
+
+								header('Refresh:3; url=/Proyecto/sql/Valoraciones/resultado.php',True,303)
+						?>
 					<?php endif ?>
     </div>
 </body>

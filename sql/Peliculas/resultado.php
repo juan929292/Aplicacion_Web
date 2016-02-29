@@ -1,8 +1,9 @@
+<html>
 <head> 
     <title>Film Review</title>
 </head>
 <body>
-   <div id="page">
+   <div id="page" style="float:left;">
 	<div id="info1" style="">
 		    <?php
         //conexion a la base de datos-peliculas
@@ -34,10 +35,14 @@
                 echo "<td>$obj->imagen</td>";
                 echo "</tr>";   
             }
-			echo "</br>"."<input type='button' value='Volver atrás' onclick='history.back()' style='font-family: Verdana; font-size: 10 pt'>"."</br>";
+			echo "</br>"."<a href='../../../Proyecto/administracion_bd.php'>"."<input type='button' value='Volver a panel' style='font-family: Verdana; font-size: 10 pt'>"."</a>"."</br>";
 			$result->close();
             unset($obj);
             unset($connection);
         ?>
         </table>
 	</div>
+	</div>
+	<img src='/Proyecto/sql/BD_vista_grafica.jpg' style='float:left;height:500px;width:600;margin-left:10px;'/>
+	</body>
+	</html>

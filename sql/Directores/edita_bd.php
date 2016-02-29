@@ -1,124 +1,59 @@
-<!DOCTYPE html>
-<html lang="">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
+<body>
+<?php if (!isset($_GET["idd"])) : ?>
+	<div id="info1" style="">
+		    <?php
+        //conexion a la base de datos-peliculas
+        $connection = new mysqli("localhost","root","","Cine");
+        if($connection->connect_errno){
+            echo "<h1>Se produjo un error a la hora de conectarse a la base de datos: $connection->connect_errno</h1>";
+        }
+        $result=$connection->query("SELECT * FROM directores");
 
-<body class ="card-panel #00897b teal lighten-5">
-   <div class="container">
-    <?php if (!isset($_POST["matri"])) : ?>
-        <form method="post" action="#">
-            <table class="card-panel white" style="width:600px; margin:0 auto;">
-              <thead>
-            <td class ="card-panel #00897b teal darken-1
- white-text center" style="font-size:25px;" colspan="6">Modificar reparación</td>
-        </thead>
-                <tr>
-                    <td>Matricula:
-                        
-                    <?php
-                       //echo "<td><a href='editar.php?id=$obj->IdReparacion&mat=$obj->Matricula&fent=$obj->FechaEntrada&km=$obj->Km$av=$obj->Averia$fsal=$obj->FechaSalida&$obs=obj->Observaciones'><img width=26 src='/imagenes/lapiz.png'/></a></td>"
-                       $connection = new mysqli("localhost","root","","talleresfaber");
-                        if($connection->connect_errno){
-                            echo "<h1>Se produjo un error a la hora de conectarse a la base de datos: $connection->connect_errno</h1>";
-                        }
-                
-                       $consulta_mysql='select Matricula from VEHICULOS';
-                       $result=$connection->query($consulta_mysql);
-                        
-                       $mat = $_GET['mat'];
-                       echo "<select name='matri' class='browser-default'>";
-                       while($obj=$result->fetch_object()){
-                            if($mat==$obj->Matricula){
-                                echo "<option value='".$obj->Matricula."' selected>".$obj->Matricula."</option>";
-                            }else{
-                                echo "<option value='".$obj->Matricula."'>".$obj->Matricula."</option>";
-                            }
-                        }
-                        echo "</select>";  
-                        $result->close();
-                        unset($obj);
-                        unset($connection);
-                        
-                      $obs = $_GET['obs'];
-                      $av = $_GET['av'];
-                      $fent = $_GET['fent'];
-                      $fsal= $_GET['fsal'];
-                      $km = $_GET['km'];
-                      $id = $_GET["id"];
-                      $rep = $_GET["rep"];
-                    
-                    echo '</td>
-                    <td>Fecha de Entrada: <input required type="date" name="fentrada" value="'.$fent.'" > </td>
-                </tr>
-                <tr>
-                    <td>Km: <input required type="number" name="km" value='.$km.' ></td>
-                    <td>Fecha de Salida: <input type="date" name="fsalida" value="'.$fsal.'"> </td>
-                </tr>
-                <tr>
-                    <td colspan=2>Averia: <textarea required name="averia" style="height100px;" value="'.$av.'">'.$av.'</textarea></td></tr><tr>
-                    
-                    <td>Reparado:<br><br>';
-                if($rep==1){
-                    echo '<input  name="rep" value="1" type="radio" id="rep1" checked />
-                    <label for="rep1">Si</label>
-                    <input  name="rep" value="0" type="radio" id="rep2"/>
-                    <label for="rep2">No</label>';
-                }else{
-                       echo '<input  name="rep" value="1" type="radio" id="rep1" />
-                        <label for="rep1">Si</label>
-                        <input  name="rep" value="0" type="radio" id="rep2" checked/>
-                        <label for="rep2">No</label>'; 
-                }
-                echo '</td>
-                </tr>
-                <tr>
-                    
-                        <td colspan=2>Observaciones: <textarea  style="height100px;" required name="obs" value="'.$obs.'">'.$obs.'</textarea> </td>
-                </tr>
-             <input type="hidden" name="id" value="'.$id.'">
-             <tr>
-                    <td colspan="2"><input class="waves-effect waves-light btn" style="margin-left:35%" type="submit" name="send" value="enviar"></td>
-                </tr></table>';
-        ?>
-        <?php else: ?>
-
-        <?php
-            $matri=$_POST['matri'];
-            $fent=$_POST['fentrada'];
-            $fsal=$_POST['fsalida'];
-            $km=$_POST['km'];
-            $averia=$_POST['averia'];
-            $rep=$_POST['rep'];
-            $obs= $_POST['obs'];
-            $id= $_POST['id'];
-        
-         
-            $connection = new mysqli("localhost","root","","talleresfaber");
-                        if($connection->connect_errno){
-                            echo "<h1>Se produjo un error a la hora de conectarse a la base de datos: $connection->connect_errno</h1>";
-            } 
-            $consulta="UPDATE REPARACIONES SET IdReparacion=$id,Matricula='$matri', FechaEntrada='$fent', Km=$km, Averia='$averia' ,FechaSalida='$fsal' ,Observaciones='$obs',  Reparado = $rep WHERE IdReparacion=$id";
-            echo $consulta."<br>";
-        
+echo "<h3>Editar Director</h3>";
+		?>
+		<table class="centered bordered card-panel white"  style="text-align:center;">
+            <tr class="card-panel teal lighten-2 white-text" style="font-weight:bold">
+                <td>Id_Genero</td>
+                <td>Nombre</td>
+                <td>Pais</td>
+            </tr>
             
-            if($connection->query($consulta)==true){
-                echo "perfe";
-                header('Location: reparaciones.php');
-            }else{
-                echo $connection->error;   
+        <?php
+            while($obj=$result->fetch_object()){
+                echo "<tr>";
+                echo "<td>$obj->id_director</td>";
+                echo "<td>$obj->nombre</td>";
+                echo "<td>$obj->pais</td>";
+                echo "<td><a href='edita_bd.php?idd=$obj->id_director'><img width=26 src='/proyecto/img/edita.png'/></a></td>";
+                echo "</tr>";   
             }
-            unset($connection);
-
         ?>
-                </div>
-      <?php endif ?>
+        </table>
+	</div>
+	<?php else : ?>
+	  <?php
+        //conexion a la base de datos-peliculas
+        $connection = new mysqli("localhost","root","","Cine");
+        if($connection->connect_errno){
+            echo "<h1>Se produjo un error a la hora de conectarse a la base de datos: $connection->connect_errno</h1>";
+        }
+        $result=$connection->query("SELECT * FROM directores where id_director=".$_GET['idd'].";");
+							echo "<form method='post' action='edita_fila.php'>";
+							while($obj=$result->fetch_object()){
+								echo "<h3>Editar Director: ".$obj->nombre ."</h3>";
+								echo "<input required type='hidden' value=".$obj->id_director ." name='val1' readonly='readonly'>"."</br>";
+								echo "<h3>Nombre:</h3>";
+								echo "<input required type='text' placeholder="."'".$obj->nombre ."'"." name='val2'>"."</br>";
+								echo "<h3>Pais:</h3>";
+								echo "<input required type='text' placeholder="."'".$obj->pais ."'"."name='val3'>"."</br>";
+							echo "</br>"."<input type='submit' value='Enviar'>";
+							}
+							echo "</form>";
+                    ?>
+					<?php endif ?>
 </body>
 </html>

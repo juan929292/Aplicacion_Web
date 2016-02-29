@@ -1,26 +1,63 @@
-<!DOCTYPE html>
-<html lang="">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
 </head>
-
 <body>
-    <?php
-        $connection = new mysqli("localhost","root","","talleresfaber");
+<?php if (!isset($_GET["id1"])) : ?>
+	<div id="info1" style="">
+		    <?php
+        //conexion a la base de datos-peliculas
+        $connection = new mysqli("localhost","root","","Cine");
         if($connection->connect_errno){
             echo "<h1>Se produjo un error a la hora de conectarse a la base de datos: $connection->connect_errno</h1>";
         }
-        $idRep = $_GET["id"];//
-        echo $idRep;
-        $connection->query("DELETE FROM INTERVIENEN WHERE IdReparacion=$idRep");
-        $connection->query("DELETE FROM FACTURAS WHERE IdReparacion=$idRep");
-        $connection->query("DELETE FROM INCLUYEN WHERE IdReparacion=$idRep");
-        $connection->query("DELETE FROM REALIZAN WHERE IdReparacion=$idRep");
-        $connection->query("DELETE FROM REPARACIONES WHERE IdReparacion=$idRep");
-        unset($connection);
-        header('Location: reparaciones.php');
-    ?>
+        $result=$connection->query("SELECT peliculas.id_pelicula,peliculas.titulo,directores.id_director,directores.nombre FROM peliculas
+		join dirigida_por on peliculas.id_pelicula=dirigida_por.id_pelicula join directores on dirigida_por.id_director=directores.id_director;");
+
+		echo "<h3>Borrar Registro de 'Dirigida_por'</h3>";
+		?>
+		<table class="centered bordered card-panel white"  style="text-align:center;">
+            <tr class="card-panel teal lighten-2 white-text" style="font-weight:bold">
+				<td>Id_pelicula</td>
+                <td>titulo</td>
+                <td>Id_director</td>
+                <td>Nombre</td>
+            </tr>
+            
+        <?php
+            while($obj=$result->fetch_object()){
+                echo "<tr>";
+                echo "<td>$obj->id_pelicula</td>";
+                echo "<td>$obj->titulo</td>";
+                echo "<td>$obj->id_director</td>";
+                echo "<td>$obj->nombre</td>";
+                echo "<td><a href='borra_bd.php?id1=$obj->id_pelicula&id2=$obj->id_director'><img width=26 src='/proyecto/img/borra.png'/></a></td>";
+                echo "</tr>";   
+            }
+        ?>
+        </table>
+	</div>
+	<?php else: ?>
+				<?php
+				//echo $_GET['id1'];
+				//echo $_GET['id2'];
+        $connection = new mysqli("localhost","root","","Cine");
+                        if($connection->connect_errno){
+                            echo "<h1>Se produjo un error a la hora de conectarse a la base de datos: $connection->connect_errno</h1>";
+								}
+								$idpeli=$_GET['id1'];
+								$iddir=$_GET['id2'];
+								$consulta="DELETE FROM dirigida_por WHERE id_director=$iddir and id_pelicula=$idpeli;";
+								echo "</br>";
+								if($connection->query($consulta)==true){
+									echo "<h2>Borrado realizado correctamente, Redireccionando...</h2>";
+								}else{
+									echo $connection->error;   
+								}
+								unset($connection);
+
+								header('Refresh:3; url=/Proyecto/sql/Dirigida_por/resultado.php',True,303);
+					?>
+								<?php endif ?>
 </body>
 </html>

@@ -119,17 +119,10 @@ ul {
 	margin-bottom: 10px;
 }
 #login{
-<<<<<<< HEAD:Proyecto/css/general.css
 	height:100px;
 	width:200px;
 	background: #B0D9F9;
 	color:black;
-=======
-	height:80px;
-	width:150px;
-	background: #B0D9F9;
-	padding:0px;
->>>>>>> 35f18074de07e4aea7ce236a694900ec197bc869:css/general.css
 	}
 #login h4{
 	color: black;
@@ -153,7 +146,6 @@ ul {
 /* main */
 
 #main {
-<<<<<<< HEAD:Proyecto/css/general.css
     background-color:#4625A9;
 	height:auto; 
 	width:950px;
@@ -178,23 +170,11 @@ ul {
 		float:left;
 		margin: 10px 10px 10px 10px;
 
-=======
-    background: #4C5070 url(../img/main.gif) repeat-y;
-	height:400px; 
-	width:950px;
-}
-#contenido {
-    background: #4C5070 url(../img/content.jpg) repeat-y;
-	height:400px; 
-	width:700px;
-	float:left;
->>>>>>> 35f18074de07e4aea7ce236a694900ec197bc869:css/general.css
 }
 
 /* sidebar */
 
 #sidebar {
-<<<<<<< HEAD:Proyecto/css/general.css
 
 	float:left;
     width: 180px;
@@ -204,12 +184,6 @@ ul {
 
 	
 	
-=======
-    float: left;
-    width: 200px;
-    padding: 25px 0px 0px 30px;
-    background: url(../img/sidebar.jpg) no-repeat;
->>>>>>> 35f18074de07e4aea7ce236a694900ec197bc869:css/general.css
 }
 #sidebaraso {
      display:table-cell;
@@ -219,7 +193,6 @@ ul {
 	
 	
 }
-
 
 
 #sidebar h2 {
@@ -300,24 +273,15 @@ ul {
 /* footer */
 
 #footer {
-<<<<<<< HEAD:Proyecto/css/general.css
     height:auto;
-=======
-    height:40px;
->>>>>>> 35f18074de07e4aea7ce236a694900ec197bc869:css/general.css
 	width:950px;
 }
 
 
 #footerleft {
     float: left;
-<<<<<<< HEAD:Proyecto/css/general.css
     width: 230px;
 	height: auto;
-=======
-    width: 200px;
-	height: 10px;
->>>>>>> 35f18074de07e4aea7ce236a694900ec197bc869:css/general.css
 	padding-left:30px;
     background: #AECAE0;
 }

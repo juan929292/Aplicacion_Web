@@ -1,26 +1,57 @@
-<!DOCTYPE html>
-<html lang="">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
 </head>
-
 <body>
-    <?php
-        $connection = new mysqli("localhost","root","","talleresfaber");
+<?php if (!isset($_GET["idd"])) : ?>
+	<div id="info1" style="">
+		    <?php
+        //conexion a la base de datos-peliculas
+        $connection = new mysqli("localhost","root","","Cine");
         if($connection->connect_errno){
             echo "<h1>Se produjo un error a la hora de conectarse a la base de datos: $connection->connect_errno</h1>";
         }
-        $idRep = $_GET["id"];//
-        echo $idRep;
-        $connection->query("DELETE FROM INTERVIENEN WHERE IdReparacion=$idRep");
-        $connection->query("DELETE FROM FACTURAS WHERE IdReparacion=$idRep");
-        $connection->query("DELETE FROM INCLUYEN WHERE IdReparacion=$idRep");
-        $connection->query("DELETE FROM REALIZAN WHERE IdReparacion=$idRep");
-        $connection->query("DELETE FROM REPARACIONES WHERE IdReparacion=$idRep");
-        unset($connection);
-        header('Location: reparaciones.php');
-    ?>
+        $result=$connection->query("SELECT * FROM directores");
+
+echo "<h3>Borrar Director</h3>";
+		?>
+		<table class="centered bordered card-panel white"  style="text-align:center;">
+            <tr class="card-panel teal lighten-2 white-text" style="font-weight:bold">
+                <td>Id_Genero</td>
+                <td>Nombre</td>
+                <td>Pais</td>
+            </tr>
+            
+        <?php
+            while($obj=$result->fetch_object()){
+                echo "<tr>";
+                echo "<td>$obj->id_director</td>";
+                echo "<td>$obj->nombre</td>";
+                echo "<td>$obj->pais</td>";
+                echo "<td><a href='borra_bd.php?idd=$obj->id_director'><img width=26 src='/proyecto/img/borra.png'/></a></td>";
+                echo "</tr>";   
+            }
+        ?>
+        </table>
+	</div>
+	<?php else: ?>
+				<?php
+        $connection = new mysqli("localhost","root","","Cine");
+                        if($connection->connect_errno){
+                            echo "<h1>Se produjo un error a la hora de conectarse a la base de datos: $connection->connect_errno</h1>";
+								}
+								$iddir=$_GET['idd'];
+								$consulta="DELETE FROM directores WHERE id_director=$iddir;";
+								echo "</br>";
+								if($connection->query($consulta)==true){
+									echo "<h2>Borrado realizado correctamente, Redireccionando...</h2>";
+								}else{
+									echo $connection->error;   
+								}
+								unset($connection);
+
+								header('Refresh:3; url=/Proyecto/sql/Directores/resultado.php',True,303);
+					?>
+								<?php endif ?>
 </body>
 </html>
